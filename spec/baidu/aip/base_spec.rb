@@ -4,9 +4,18 @@ require 'ostruct'
 
 RSpec.describe Baidu::Aip::Base do
 
+  class MyClient
+    include Baidu::Aip::Client
+
+    def initialize(api_key, secret_key)
+      self.api_key = api_key
+      self.secret_key = secret_key
+    end
+  end
+
   let(:api_key) { '1b1142f9507fc173f3cb548190abc651' }
   let(:secret_key) { 'a61387b59bf1af13eb834a67575c1f51' }
-  let(:client) { Baidu::Aip::Client.new api_key, secret_key }
+  let(:client) { MyClient.new api_key, secret_key }
 
   describe "#get_token" do
     let(:instance) { Baidu::Aip::Base.new }
