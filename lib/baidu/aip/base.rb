@@ -31,16 +31,13 @@ module Baidu
           response = RestClient.post "#{service_url}?#{build_url(get_params)}", post_params, headers
           JSON(response.body)
         rescue RestClient::ExceptionWithResponse => e
-          puts e.response
-          Rails.logger.error(e.response) if defined? Rails
-          e.response
+          log e.response
           JSON(e.response.body)
         end
       end
 
       def get_token
         if client.access_token && from_now(hour(1)) < client.expire_time
-          p 'no retrieving'
           client.access_token
         else
           token_hash = {
@@ -56,8 +53,7 @@ module Baidu
             client.expire_time = Time.now + json['expires_in']
             client.access_token
           rescue RestClient::ExceptionWithResponse => e
-            puts e.response
-            Rails.logger.error(e.response) if defined? Rails
+            log e.response
             return nil
           end
         end
@@ -72,17 +68,16 @@ module Baidu
           ERB::Util.url_encode str
         end
 
-        protected
-          def custom_params
-            {}
-          end
+        def custom_params
+          {}
+        end
 
-          def intrinsic_params
-            {
-              :access_token => get_token,
-              :aipSdk => 'ruby',
-            }
-          end
+        def intrinsic_params
+          {
+            :access_token => get_token,
+            :aipSdk => 'ruby',
+          }
+        end
 
         def hour(num)
           3600 * num
@@ -94,6 +89,11 @@ module Baidu
 
         def ago(seconds)
           Time.now - seconds
+        end
+
+        def log(text)
+          puts text
+          Rails.logger.info(text) if defined? Rails
         end
 
     end
