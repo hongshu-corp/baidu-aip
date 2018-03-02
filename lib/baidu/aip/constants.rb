@@ -11,10 +11,10 @@ module Baidu::Aip
     FACE_USER_UPDATE = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/update'
     FACE_USER_DELETE = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/delete'
     FACE_USER_GET = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/get'
-    FACE_GROUP_GETLIST = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/getlist'
-    FACE_GROUP_GETUSERS = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/getusers'
-    FACE_GROUP_ADDUSER = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/adduser'
-    FACE_GROUP_DELETEUSER = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/deleteuser'
+    FACE_GROUP_GET_LIST = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/getlist'
+    FACE_GROUP_GET_USERS = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/getusers'
+    FACE_GROUP_COPY_USER = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/adduser'
+    FACE_GROUP_DELETE_USER = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/deleteuser'
 
 
     # IMAGE_AUDIT
