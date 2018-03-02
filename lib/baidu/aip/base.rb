@@ -1,17 +1,20 @@
 require 'erb'
 require 'json'
 require 'rest-client'
+require 'baidu/aip/constants'
 
 module Baidu
   module Aip
     class Base
+      include Constants
 
       attr_accessor :client
 
       TOKEN_URL = 'https://aip.baidubce.com/oauth/2.0/token'
 
       def service_url
-        ''
+        name = underscore(self.class.name.sub('Baidu::Aip::', '').sub('::', '')).upcase
+        self.class.const_get(name)
       end
 
       def get_params
@@ -94,6 +97,14 @@ module Baidu
         def log(text)
           puts text
           Rails.logger.info(text) if defined? Rails
+        end
+
+        def underscore(str)
+          str.gsub(/::/, '/').
+          gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+          gsub(/([a-z\d])([A-Z])/,'\1_\2').
+          tr("-", "_").
+          downcase
         end
 
     end

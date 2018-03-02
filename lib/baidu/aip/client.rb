@@ -1,4 +1,4 @@
-require 'baidu/aip/image_classify/dish'
+require 'baidu/aip/image_recognition/dish'
 require 'baidu/aip/tokenable'
 
 module Baidu::Aip
@@ -13,7 +13,7 @@ module Baidu::Aip
     end
 
     def dish_detect(image_in_base64, options = {})
-      aip = ImageClassify::Dish.new(image_in_base64, options)
+      aip = ImageRecognition::Dish.new(image_in_base64, options)
       aip.client = self
 
       aip.process
