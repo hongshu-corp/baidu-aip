@@ -10,9 +10,37 @@ module Baidu
 
       TOKEN_URL = 'https://aip.baidubce.com/oauth/2.0/token'
 
+      def service_url
+        ''
+      end
+
+      def get_params
+        custom_params.merge intrinsic_params
+      end
+
+      def post_params
+        {}
+      end
+
+      def headers
+        {accept: :json}
+      end
+
+      def process
+        begin
+          response = RestClient.post "#{service_url}?#{build_url(get_params)}", post_params, headers
+          JSON(response.body)
+        rescue RestClient::ExceptionWithResponse => e
+          puts e.response
+          Rails.logger.error(e.response) if defined? Rails
+          e.response
+          JSON(e.response.body)
+        end
+      end
 
       def get_token
         if client.access_token && from_now(hour(1)) < client.expire_time
+          p 'no retrieving'
           client.access_token
         else
           token_hash = {
@@ -43,6 +71,18 @@ module Baidu
         def encode(str)
           ERB::Util.url_encode str
         end
+
+        protected
+          def custom_params
+            {}
+          end
+
+          def intrinsic_params
+            {
+              :access_token => get_token,
+              :aipSdk => 'ruby',
+            }
+          end
 
         def hour(num)
           3600 * num

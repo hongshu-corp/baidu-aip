@@ -1,3 +1,5 @@
+require 'baidu/aip/image_classify/dish'
+
 module Baidu::Aip
   class Client
     attr_accessor :api_key, :secret_key
@@ -24,6 +26,13 @@ module Baidu::Aip
 
     def expire_time=(time)
       @@expire_time = time
+    end
+
+    def dish_detect(image_in_base64, options = {})
+      aip = ImageClassify::Dish.new(image_in_base64, options)
+      aip.client = self
+
+      aip.process
     end
 
   end
