@@ -1,12 +1,10 @@
 require "spec_helper"
-require 'baidu/aip/post_base'
-require 'ostruct'
 
-RSpec.describe Baidu::Aip::ImageRecognition::Dish do
-  let(:model) { Baidu::Aip::ImageRecognition::Dish.new }
+RSpec.describe Baidu::Aip::ImageRecognition::Dish, type: :model do
+  let(:model) { described_class.new }
 
   describe "#service_url" do
-    specify { expect(model.service_url).to eq 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish' }
+    specify { expect(model.service_url).to eq Baidu::Aip::Constants::IMAGE_RECOGNITION_DISH }
   end
 
   describe "#post_params" do

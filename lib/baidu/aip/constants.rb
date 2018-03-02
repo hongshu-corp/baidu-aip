@@ -28,10 +28,10 @@ module Baidu::Aip
 
     # IMAGE RECOGNITION
     IMAGE_RECOGNITION_DISH= "https://aip.baidubce.com/rest/2.0/image-classify/v2/dish"
-    IMAGE_RECOGNITION_CAR_DETECT = "https://aip.baidubce.com/rest/2.0/image-classify/v1/car"
-    IMAGE_RECOGNITION_LOGO_SEARCH = "https://aip.baidubce.com/rest/2.0/image-classify/v2/logo"
+    IMAGE_RECOGNITION_CAR = "https://aip.baidubce.com/rest/2.0/image-classify/v1/car"
+    IMAGE_RECOGNITION_LOGO = "https://aip.baidubce.com/rest/2.0/image-classify/v2/logo"
     IMAGE_RECOGNITION_LOGO_ADD = "https://aip.baidubce.com/rest/2.0/realtime_search/v1/logo/add"
-    IMAGE_RECOGNITION_LOGO = "https://aip.baidubce.com/rest/2.0/realtime_search/v1/logo/delete"
+    IMAGE_RECOGNITION_LOGO_DELETE = "https://aip.baidubce.com/rest/2.0/realtime_search/v1/logo/delete"
     IMAGE_RECOGNITION_ANIMAL = "https://aip.baidubce.com/rest/2.0/image-classify/v1/animal"
     IMAGE_RECOGNITION_PLANT = "https://aip.baidubce.com/rest/2.0/image-classify/v1/plant"
     IMAGE_RECOGNITION_OBJECT = "https://aip.baidubce.com/rest/2.0/image-classify/v1/object_detect"
