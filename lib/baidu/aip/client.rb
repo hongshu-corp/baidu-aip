@@ -22,6 +22,13 @@ require 'baidu/aip/image_recognition/object'
 require 'baidu/aip/image_recognition/plant'
 require 'baidu/aip/tokenable'
 
+require 'baidu/aip/image_audit/anti_porn'
+require 'baidu/aip/image_audit/anti_porn_gif'
+require 'baidu/aip/image_audit/anti_terror'
+require 'baidu/aip/image_audit/combination'
+require 'baidu/aip/image_audit/face'
+require 'baidu/aip/image_audit/user_defined'
+
 module Baidu::Aip
   module Client
     include Tokenable
