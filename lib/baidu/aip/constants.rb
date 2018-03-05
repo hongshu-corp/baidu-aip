@@ -47,8 +47,9 @@ module Baidu::Aip
     IMAGE_SEARCH_PRODUCT = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/search'
     IMAGE_SEARCH_PRODUCT_DELETE = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/delete'
 
-    KNOWLEDGE_GRAPH_CREATE_TASK = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_create'
-    KNOWLEDGE_GRAPH_UPDATE_TASK = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_update'
+    # KNOWLEDGE GRAPH
+    KNOWLEDGE_GRAPH_TASK_CREATE = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_create'
+    KNOWLEDGE_GRAPH_TASK_UPDATE = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_update'
     KNOWLEDGE_GRAPH_TASK_INFO = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_info'
     KNOWLEDGE_GRAPH_TASK_QUERY = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_query'
     KNOWLEDGE_GRAPH_TASK_START = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_start'

@@ -39,6 +39,13 @@ require 'baidu/aip/image_search/similar_add'
 require 'baidu/aip/image_search/similar_delete'
 require 'baidu/aip/image_search/similar'
 
+require 'baidu/aip/knowledge_graph/task_create'
+require 'baidu/aip/knowledge_graph/task_info'
+require 'baidu/aip/knowledge_graph/task_query'
+require 'baidu/aip/knowledge_graph/task_status'
+require 'baidu/aip/knowledge_graph/task_start'
+require 'baidu/aip/knowledge_graph/task_update'
+
 module Baidu::Aip
   module Client
     include Tokenable
