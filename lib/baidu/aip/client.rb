@@ -46,6 +46,18 @@ require 'baidu/aip/knowledge_graph/task_status'
 require 'baidu/aip/knowledge_graph/task_start'
 require 'baidu/aip/knowledge_graph/task_update'
 
+require 'baidu/aip/nlp/comment_tag'
+require 'baidu/aip/nlp/dep_parser'
+require 'baidu/aip/nlp/dnnlm_cn'
+require 'baidu/aip/nlp/general_basic'
+require 'baidu/aip/nlp/keyword'
+require 'baidu/aip/nlp/lexer_custom'
+require 'baidu/aip/nlp/lexer'
+require 'baidu/aip/nlp/sentiment_classify'
+require 'baidu/aip/nlp/simnet'
+require 'baidu/aip/nlp/word_embedding'
+require 'baidu/aip/nlp/word_sim_embedding'
+
 module Baidu::Aip
   module Client
     include Tokenable
