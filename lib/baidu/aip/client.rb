@@ -29,6 +29,16 @@ require 'baidu/aip/image_audit/combination'
 require 'baidu/aip/image_audit/face'
 require 'baidu/aip/image_audit/user_defined'
 
+require 'baidu/aip/image_search/product_add'
+require 'baidu/aip/image_search/product_delete'
+require 'baidu/aip/image_search/product'
+require 'baidu/aip/image_search/same_add'
+require 'baidu/aip/image_search/same_delete'
+require 'baidu/aip/image_search/same'
+require 'baidu/aip/image_search/similar_add'
+require 'baidu/aip/image_search/similar_delete'
+require 'baidu/aip/image_search/similar'
+
 module Baidu::Aip
   module Client
     include Tokenable

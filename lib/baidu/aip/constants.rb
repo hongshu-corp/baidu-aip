@@ -44,7 +44,7 @@ module Baidu::Aip
     IMAGE_SEARCH_SIMILAR = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/search'
     IMAGE_SEARCH_SIMILAR_DELETE = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/delete'
     IMAGE_SEARCH_PRODUCT_ADD = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/add'
-    IMAGE_SEARCH_PRODUCT_SEARCH = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/search'
+    IMAGE_SEARCH_PRODUCT = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/search'
     IMAGE_SEARCH_PRODUCT_DELETE = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/delete'
 
     KNOWLEDGE_GRAPH_CREATE_TASK = 'https://aip.baidubce.com/rest/2.0/kg/v1/pie/task_create'
