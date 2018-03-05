@@ -1,8 +1,6 @@
-# Baidu::Aip
+# Baidu::Aip - unofficial
 
 This gem is used for calling baidu aip.
-
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -21,20 +19,28 @@ Or install it yourself as:
     $ gem install baidu-aip
 
 ## Usage
+Add file baidu-aip.rb to your initializers folder.
+```ruby
+Baidu::Aip.configure do |config|
+  config.api_key = 'your baidu app api key'
+  config.secret_key = 'your baidu app secret key'
+end
+```
 
+e.g.
+Baidu dish detect:
+```ruby
+base64 = Base64.encode64(File.open("your image path", "rb").read)
 
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+result = Baidu::Aip.image_recognition_dish base64
+```
 
 ## Contributing
 
+I will not consume all the apis, there are some issue maybe.
 Welcome pr.
-Hope help.
 
+Hope help.
 
 ## License
 
