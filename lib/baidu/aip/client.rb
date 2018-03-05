@@ -1,3 +1,5 @@
+require 'baidu/aip/tokenable'
+
 require 'baidu/aip/face/detect'
 require 'baidu/aip/face/group_copy_user'
 require 'baidu/aip/face/group_delete_user'
@@ -20,7 +22,6 @@ require 'baidu/aip/image_recognition/logo_add'
 require 'baidu/aip/image_recognition/logo_delete'
 require 'baidu/aip/image_recognition/object'
 require 'baidu/aip/image_recognition/plant'
-require 'baidu/aip/tokenable'
 
 require 'baidu/aip/image_audit/anti_porn'
 require 'baidu/aip/image_audit/anti_porn_gif'
@@ -49,7 +50,6 @@ require 'baidu/aip/knowledge_graph/task_update'
 require 'baidu/aip/nlp/comment_tag'
 require 'baidu/aip/nlp/dep_parser'
 require 'baidu/aip/nlp/dnnlm_cn'
-require 'baidu/aip/nlp/general_basic'
 require 'baidu/aip/nlp/keyword'
 require 'baidu/aip/nlp/lexer_custom'
 require 'baidu/aip/nlp/lexer'
@@ -66,6 +66,7 @@ require 'baidu/aip/ocr/custom'
 require 'baidu/aip/ocr/driving_license'
 require 'baidu/aip/ocr/form_recognize'
 require 'baidu/aip/ocr/form_result_get'
+require 'baidu/aip/ocr/general_basic'
 require 'baidu/aip/ocr/general_enhanced'
 require 'baidu/aip/ocr/general'
 require 'baidu/aip/ocr/idcard'
@@ -79,7 +80,6 @@ module Baidu::Aip
     include Tokenable
 
     attr_accessor :api_key, :secret_key
-
 
     # Face
     def face_detect(image_in_base64, options = {})
@@ -143,20 +143,17 @@ module Baidu::Aip
       aip.process
     end
 
-
     def face_user_delete(uid, options = {})
       aip = Face::UserDelete.new options.merge({uid: uid})
       aip.client = self
       aip.process
     end
 
-
     def face_user_get(uid, options = {})
       aip = Face::UserGet.new options.merge({uid: uid})
       aip.client = self
       aip.process
     end
-
 
     def face_user_update(uid, image_in_base64, user_info, group_id, options = {})
       aip = Face::UserUpdate.new options.merge({uid: uid, image: image_in_base64, user_info: user_info, group_id: group_id})
@@ -230,5 +227,310 @@ module Baidu::Aip
       aip.process
     end
 
+    # Image audit
+    def image_audit_anti_porn(image_in_base64)
+      aip = ImageAudit::AntiPorn.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_anti_porn_gif(image_in_base64)
+      aip = ImageAudit::AntiPornGif.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_anti_terrer(image_in_base64)
+      aip = ImageAudit::AntiTerror.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_combination(scenes, image_in_base64, options={})
+      aip = ImageAudit::Combination.new options.merge({scenes: scenes, image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_combination_with_url(scenes, image_url, options={})
+      aip = ImageAudit::Combination.new options.merge({scenes: scenes, imageUrl: image_url})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_face(images_in_base64 = [])
+      aip = ImageAudit::Face.new({images: images_in_base64.join(',')})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_face_url(image_urls = [])
+      aip = ImageAudit::Face.new({imgUrls: image_urls.join(',')})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_user_defined(image_in_base64)
+      aip = ImageAudit::UserDefined.new({image: images_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_face_url(image_url)
+      aip = ImageAudit::UserDefined.new({imgUrl: image_url})
+      aip.client = self
+      aip.process
+    end
+
+    # Image Search
+    def image_search_product_add(image_in_base64, options = {})
+      aip = ImageSearch::ProductAdd.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_product(image_in_base64, options = {})
+      aip = ImageSearch::Product.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_product_delete(image_in_base64)
+      aip = ImageSearch::ProductDelete.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_same_add(image_in_base64, brief)
+      aip = ImageSearch::SameAdd.new({image: image_in_base64, brief: brief})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_same(image_in_base64)
+      aip = ImageSearch::Same.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_same_delete(image_in_base64)
+      aip = ImageSearch::SameDelete.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_similar_add(image_in_base64, brief)
+      aip = ImageSearch::SimilarAdd.new({image: image_in_base64, brief: brief})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_similar(image_in_base64)
+      aip = ImageSearch::Similar.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def image_search_similar_delete(image_in_base64)
+      aip = ImageSearch::SimilarDelete.new({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    # knowledge_graph
+    def knowledge_graph_task_create(name, template_content, input_mapping_file, output_file, ulr_pattern, options = {})
+      aip = KnowledgeGraph::TaskCreate.new options.merge({name: name, template_content: template_content, input_mapping_file: input_mapping_file, output_file: output_file})
+      aip.client = self
+      aip.process
+    end
+
+    def knowledge_graph_task_info(id, options = {})
+      aip = KnowledgeGraph::TaskInfo.new options.merge({id: id})
+      aip.client = self
+      aip.process
+    end
+
+    def knowledge_graph_task_query(options = {})
+      aip = KnowledgeGraph::TaskQuery.new(options)
+      aip.client = self
+      aip.process
+    end
+
+    def knowledge_graph_task_status(id, options = {})
+      aip = KnowledgeGraph::TaskStatus.new options.merge({id: id})
+      aip.client = self
+      aip.process
+    end
+
+    def knowledge_graph_task_start(id, options = {})
+      aip = KnowledgeGraph::TaskStart.new options.merge({id: id})
+      aip.client = self
+      aip.process
+    end
+
+    def knowledge_graph_task_update(id, options = {})
+      aip = KnowledgeGraph::TaskUpdate.new options.merge({id: id})
+      aip.client = self
+      aip.process
+    end
+
+    # nlp
+    def nlp_comment_tag(text, options = {})
+      aip = Nlp::CommentTag.new options.merge({text: text})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_dep_parser(text, options = {})
+      aip = Nlp::DepParser.new options.merge({text: text})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_dnnlm_cn(text, options = {})
+      aip = Nlp::DnnlmCn.new options.merge({text: text})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_keyword(title, content, options = {})
+      aip = Nlp::Keyword.new options.merge({title: title, content: content})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_lexer_custom(text, options = {})
+      aip = Nlp::LexerCustom.new options.merge({text: text})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_lexer(text, options = {})
+      aip = Nlp::Lexer.new options.merge({text: text})
+      aip.client = self
+      aip.process
+    end
+    
+    def nlp_sentiment_classify(text, options={})
+      aip = Nlp::SentimentClassify.new options.merge({text: text})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_simnet(text1, text2, options = {})
+      aip = Nlp::Simnet.new options.merge({text_1:text1, text_2: text2})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_word_embedding(word, options = {})
+      aip = Nlp::WordEmbedding.new options.merge({word: word})
+      aip.client = self
+      aip.process
+    end
+
+    def nlp_word_sim_embedding(word1, word2, options = {})
+      aip = Nlp::WordSimEmbedding.new options.merge({word_1: word1, word_2: word2})
+      aip.client = self
+      aip.process
+    end
+
+    # Ocr
+    def ocr_accurate_basic(image_in_base64, options = {})
+      aip = Ocr::AccurateBasic.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_accurate(image_in_base64, options = {})
+      aip = Ocr::Accurate.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_bankcard(image_in_base64, options = {})
+      aip = Ocr::Bankcard.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_business_license(image_in_base64, options = {})
+      aip = Ocr::BusinessLicense.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_custom(image_in_base64, template_sign, options = {})
+      aip = Ocr::Custom.new options.merge({image: image_in_base64, templateSign: template_sign})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_driving_license(image_in_base64, options = {})
+      aip = Ocr::DrivingLicense.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    # todo
+    # def ocr_form_recognize(image_in_base64, options = {})
+    #   aip = Ocr::FormRecognize.new options.merge({image: image_in_base64})
+    #   aip.client = self
+    #   aip.process
+    # end
+
+    def ocr_form_result_get(request_id, options = {})
+      aip = Ocr::FormResultGet.new options.merge({request_id: request_id})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_general_basic(image_in_base64, options = {})
+      aip = Ocr::GeneralBasic.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_genral_enhanced(image_in_base64, options = {})
+      aip = Ocr::GeneralEnhanced.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_general(image_in_base64, options = {})
+      aip = Ocr::General.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_idcard(image_in_base64, idcard_side, options = {})
+      aip = Ocr::Idcard.new options.merge({image: image_in_base64, id_card_side: idcard_side})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_license_plate(image_in_base64, options = {})
+      aip = Ocr::LicensePlate.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_receipt(image_in_base64, options = {})
+      aip = Ocr::Receipt.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_vehicle_license(image_in_base64, options = {})
+      aip = Ocr::VehicleLicense.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_web_image(image_in_base64, options = {})
+      aip = Ocr::WebImage.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
   end
 end

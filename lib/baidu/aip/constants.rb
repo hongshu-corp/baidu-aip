@@ -66,9 +66,9 @@ module Baidu::Aip
     NLP_COMMENT_TAG = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/comment_tag'
     NLP_SENTIMENT_CLASSIFY = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/sentiment_classify'
     NLP_KEYWORD = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/keyword'
-    NLP_GENERAL_BASIC = 'https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic'
 
     # OCR
+    OCR_GENERAL_BASIC = 'https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic'
     OCR_ACCURATE_BASIC = 'https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic'
     OCR_GENERAL = 'https://aip.baidubce.com/rest/2.0/ocr/v1/general'
     OCR_ACCURATE = 'https://aip.baidubce.com/rest/2.0/ocr/v1/accurate'

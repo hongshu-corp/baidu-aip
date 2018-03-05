@@ -2,7 +2,7 @@ require 'baidu/aip/post_base'
 
 module Baidu
   module Aip
-    module Nlp
+    module Ocr
       class GeneralBasic < Baidu::Aip::PostBase
 
       end
