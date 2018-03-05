@@ -58,6 +58,22 @@ require 'baidu/aip/nlp/simnet'
 require 'baidu/aip/nlp/word_embedding'
 require 'baidu/aip/nlp/word_sim_embedding'
 
+require 'baidu/aip/ocr/accurate_basic'
+require 'baidu/aip/ocr/accurate'
+require 'baidu/aip/ocr/bankcard'
+require 'baidu/aip/ocr/business_license'
+require 'baidu/aip/ocr/custom'
+require 'baidu/aip/ocr/driving_license'
+require 'baidu/aip/ocr/form_recognize'
+require 'baidu/aip/ocr/form_result_get'
+require 'baidu/aip/ocr/general_enhanced'
+require 'baidu/aip/ocr/general'
+require 'baidu/aip/ocr/idcard'
+require 'baidu/aip/ocr/license_plate'
+require 'baidu/aip/ocr/receipt'
+require 'baidu/aip/ocr/vehicle_license'
+require 'baidu/aip/ocr/web_image'
+
 module Baidu::Aip
   module Client
     include Tokenable
