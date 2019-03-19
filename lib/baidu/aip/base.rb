@@ -44,9 +44,9 @@ module Baidu
           client.access_token
         else
           token_hash = {
-            :grant_type => 'client_credentials',
-            :client_id => client.api_key,
-            :client_secret => client.secret_key
+            grant_type: 'client_credentials',
+            client_id: client.api_key,
+            client_secret: client.secret_key
           }
 
           begin
@@ -63,50 +63,50 @@ module Baidu
       end
 
       protected
-        def build_url(hash)
-          hash.map{|k,v|"#{encode(k.to_s)}=#{encode(v.to_s)}"}.join('&')
-        end
 
-        def encode(str)
-          ERB::Util.url_encode str
-        end
+      def build_url(hash)
+        hash.map { |k, v| "#{encode(k.to_s)}=#{encode(v.to_s)}" }.join('&')
+      end
 
-        def custom_params
-          {}
-        end
+      def encode(str)
+        ERB::Util.url_encode str
+      end
 
-        def intrinsic_params
-          {
-            :access_token => get_token,
-            :aipSdk => 'ruby',
-          }
-        end
+      def custom_params
+        {}
+      end
 
-        def hour(num)
-          3600 * num
-        end
+      def intrinsic_params
+        {
+          access_token: get_token,
+          aipSdk: 'ruby'
+        }
+      end
 
-        def from_now(seconds)
-          Time.now + seconds
-        end
+      def hour(num)
+        3600 * num
+      end
 
-        def ago(seconds)
-          Time.now - seconds
-        end
+      def from_now(seconds)
+        Time.now + seconds
+      end
 
-        def log(text)
-          puts text
-          Rails.logger.info(text) if defined? Rails
-        end
+      def ago(seconds)
+        Time.now - seconds
+      end
 
-        def underscore(str)
-          str.gsub(/::/, '/').
-          gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-          gsub(/([a-z\d])([A-Z])/,'\1_\2').
-          tr("-", "_").
-          downcase
-        end
+      def log(text)
+        puts text
+        Rails.logger.info(text) if defined? Rails
+      end
 
+      def underscore(str)
+        str.gsub(/::/, '/')
+           .gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+           .gsub(/([a-z\d])([A-Z])/,'\1_\2')
+           .tr('-', '_')
+           .downcase
+      end
     end
   end
 end

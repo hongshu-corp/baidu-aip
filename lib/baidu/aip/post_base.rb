@@ -8,7 +8,11 @@ module Baidu
       end
 
       def post_params
-        @options
+        default_options.merge @options
+      end
+
+      def default_options
+        {}
       end
     end
   end

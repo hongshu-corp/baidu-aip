@@ -75,6 +75,8 @@ require 'baidu/aip/ocr/receipt'
 require 'baidu/aip/ocr/vehicle_license'
 require 'baidu/aip/ocr/web_image'
 
+require 'baidu/aip/voice/text_to_voice'
+
 module Baidu::Aip
   module Client
     include Tokenable
@@ -101,13 +103,11 @@ module Baidu::Aip
       aip.process
     end
 
-
     def face_group_get_list(options = {})
       aip = Face::GroupGetList.new options
       aip.client = self
       aip.process
     end
-
 
     def face_group_get_users(group_id, options = {})
       aip = Face::GroupGetUsers.new options.merge({group_id: group_id})
@@ -115,13 +115,11 @@ module Baidu::Aip
       aip.process
     end
 
-
     def face_identify(image_in_base64, group_id, options = {})
       aip = Face::Identify.new options.merge({image: image_in_base64, group_id: group_id})
       aip.client = self
       aip.process
     end
-
 
     def face_match(images_in_base64 = [], options = {})
       aip = Face::Match.new options.merge({image: images_in_base64.join(',')})
@@ -135,7 +133,6 @@ module Baidu::Aip
       aip.client = self
       aip.process
     end
-
 
     def face_user_add(uid, group_id, image_in_base64, user_info, options = {})
       aip = Face::UserAdd.new options.merge({uid: uid, group_id: group_id, image: image_in_base64, user_info: user_info})
@@ -167,7 +164,6 @@ module Baidu::Aip
       aip.client = self
       aip.process
     end
-
 
     # Image_recognition
 
@@ -410,7 +406,7 @@ module Baidu::Aip
       aip.client = self
       aip.process
     end
-    
+
     def nlp_sentiment_classify(text, options={})
       aip = Nlp::SentimentClassify.new options.merge({text: text})
       aip.client = self
@@ -529,6 +525,12 @@ module Baidu::Aip
 
     def ocr_web_image(image_in_base64, options = {})
       aip = Ocr::WebImage.new options.merge({image: image_in_base64})
+      aip.client = self
+      aip.process
+    end
+
+    def text_to_voice(text, options = {})
+      aip = Voice::TextToVoice.new options.merge(tex: text)
       aip.client = self
       aip.process
     end
