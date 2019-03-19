@@ -61,7 +61,10 @@ require 'baidu/aip/nlp/word_sim_embedding'
 require 'baidu/aip/ocr/accurate_basic'
 require 'baidu/aip/ocr/accurate'
 require 'baidu/aip/ocr/bankcard'
+require 'baidu/aip/ocr/business_card'
 require 'baidu/aip/ocr/business_license'
+require 'baidu/aip/ocr/household_register'
+require 'baidu/aip/ocr/birth_certificate'
 require 'baidu/aip/ocr/custom'
 require 'baidu/aip/ocr/driving_license'
 require 'baidu/aip/ocr/form_recognize'
@@ -69,11 +72,15 @@ require 'baidu/aip/ocr/form_result_get'
 require 'baidu/aip/ocr/general_basic'
 require 'baidu/aip/ocr/general_enhanced'
 require 'baidu/aip/ocr/general'
+require 'baidu/aip/ocr/handwriting'
 require 'baidu/aip/ocr/idcard'
 require 'baidu/aip/ocr/license_plate'
+require 'baidu/aip/ocr/passport'
 require 'baidu/aip/ocr/receipt'
 require 'baidu/aip/ocr/vehicle_license'
 require 'baidu/aip/ocr/web_image'
+require 'baidu/aip/ocr/hk_macau_exitentrypermit'
+require 'baidu/aip/ocr/taiwan_exitentrypermit'
 
 require 'baidu/aip/voice/text_to_voice'
 
@@ -85,7 +92,7 @@ module Baidu::Aip
 
     # Face
     def face_detect(image_in_base64, options = {})
-      aip = Face::Detect.new options.merge({image: image_in_base64})
+      aip = Face::Detect.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
@@ -127,7 +134,6 @@ module Baidu::Aip
       aip.process
     end
 
-
     def face_multi_identify(image_in_base64, group_id, options = {})
       aip = Face::MultiIdentify.new options.merge({image: image_in_base64, group_id: group_id})
       aip.client = self
@@ -153,43 +159,41 @@ module Baidu::Aip
     end
 
     def face_user_update(uid, image_in_base64, user_info, group_id, options = {})
-      aip = Face::UserUpdate.new options.merge({uid: uid, image: image_in_base64, user_info: user_info, group_id: group_id})
+      aip = Face::UserUpdate.new options.merge(uid: uid, image: image_in_base64, user_info: user_info, group_id: group_id)
       aip.client = self
       aip.process
     end
 
-
     def face_verify(image_in_base64, id_card_number, name, options = {})
-      aip = Face::Verify.new options.merge({image: image_in_base64, id_card_number: id_card_number, name: name})
+      aip = Face::Verify.new options.merge(image: image_in_base64, id_card_number: id_card_number, name: name)
       aip.client = self
       aip.process
     end
 
     # Image_recognition
-
     def image_recognition_animal(image_in_base64, options = {})
-      aip = ImageRecognition::Animal.new options.merge({image: image_in_base64})
+      aip = ImageRecognition::Animal.new options.merge(image: image_in_base64)
       aip.client = self
 
       aip.process
     end
 
     def image_recognition_car(image_in_base64, options = {})
-      aip = ImageRecognition::Car.new options.merge({image: image_in_base64})
+      aip = ImageRecognition::Car.new options.merge(image: image_in_base64)
       aip.client = self
 
       aip.process
     end
 
     def image_recognition_dish(image_in_base64, options = {})
-      aip = ImageRecognition::Dish.new options.merge({image: image_in_base64})
+      aip = ImageRecognition::Dish.new options.merge(image: image_in_base64)
       aip.client = self
 
       aip.process
     end
 
     def image_recognition_logo(image_in_base64, options = {})
-      aip = ImageRecognition::Logo.new options.merge({image: image_in_base64})
+      aip = ImageRecognition::Logo.new options.merge(image: image_in_base64)
       aip.client = self
 
       aip.process
@@ -210,14 +214,14 @@ module Baidu::Aip
     end
 
     def image_recognition_object(image_in_base64, options = {})
-      aip = ImageRecognition::Object.new options.merge({image: image_in_base64})
+      aip = ImageRecognition::Object.new options.merge(image: image_in_base64)
       aip.client = self
 
       aip.process
     end
 
     def image_recognition_plant(image_in_base64)
-      aip = ImageRecognition::Plant.new({image: image_in_base64})
+      aip = ImageRecognition::Plant.new(image: image_in_base64)
       aip.client = self
 
       aip.process
@@ -225,19 +229,19 @@ module Baidu::Aip
 
     # Image audit
     def image_audit_anti_porn(image_in_base64)
-      aip = ImageAudit::AntiPorn.new({image: image_in_base64})
+      aip = ImageAudit::AntiPorn.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def image_audit_anti_porn_gif(image_in_base64)
-      aip = ImageAudit::AntiPornGif.new({image: image_in_base64})
+      aip = ImageAudit::AntiPornGif.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def image_audit_anti_terrer(image_in_base64)
-      aip = ImageAudit::AntiTerror.new({image: image_in_base64})
+      aip = ImageAudit::AntiTerror.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
@@ -280,19 +284,19 @@ module Baidu::Aip
 
     # Image Search
     def image_search_product_add(image_in_base64, options = {})
-      aip = ImageSearch::ProductAdd.new options.merge({image: image_in_base64})
+      aip = ImageSearch::ProductAdd.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def image_search_product(image_in_base64, options = {})
-      aip = ImageSearch::Product.new options.merge({image: image_in_base64})
+      aip = ImageSearch::Product.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def image_search_product_delete(image_in_base64)
-      aip = ImageSearch::ProductDelete.new({image: image_in_base64})
+      aip = ImageSearch::ProductDelete.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
@@ -304,13 +308,13 @@ module Baidu::Aip
     end
 
     def image_search_same(image_in_base64)
-      aip = ImageSearch::Same.new({image: image_in_base64})
+      aip = ImageSearch::Same.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def image_search_same_delete(image_in_base64)
-      aip = ImageSearch::SameDelete.new({image: image_in_base64})
+      aip = ImageSearch::SameDelete.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
@@ -322,13 +326,13 @@ module Baidu::Aip
     end
 
     def image_search_similar(image_in_base64)
-      aip = ImageSearch::Similar.new({image: image_in_base64})
+      aip = ImageSearch::Similar.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def image_search_similar_delete(image_in_base64)
-      aip = ImageSearch::SimilarDelete.new({image: image_in_base64})
+      aip = ImageSearch::SimilarDelete.new(image: image_in_base64)
       aip.client = self
       aip.process
     end
@@ -433,25 +437,37 @@ module Baidu::Aip
 
     # Ocr
     def ocr_accurate_basic(image_in_base64, options = {})
-      aip = Ocr::AccurateBasic.new options.merge({image: image_in_base64})
+      aip = Ocr::AccurateBasic.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_accurate(image_in_base64, options = {})
-      aip = Ocr::Accurate.new options.merge({image: image_in_base64})
+      aip = Ocr::Accurate.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_bankcard(image_in_base64, options = {})
-      aip = Ocr::Bankcard.new options.merge({image: image_in_base64})
+      aip = Ocr::Bankcard.new options.merge(image: image_in_base64)
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_business_card(image_in_base64, options = {})
+      aip = Ocr::BusinessCard.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_business_license(image_in_base64, options = {})
-      aip = Ocr::BusinessLicense.new options.merge({image: image_in_base64})
+      aip = Ocr::BusinessLicense.new options.merge(image: image_in_base64)
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_birth_certificate(image_in_base64, options = {})
+      aip = Ocr::BirthCertificate.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
@@ -463,14 +479,14 @@ module Baidu::Aip
     end
 
     def ocr_driving_license(image_in_base64, options = {})
-      aip = Ocr::DrivingLicense.new options.merge({image: image_in_base64})
+      aip = Ocr::DrivingLicense.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     # todo
     # def ocr_form_recognize(image_in_base64, options = {})
-    #   aip = Ocr::FormRecognize.new options.merge({image: image_in_base64})
+    #   aip = Ocr::FormRecognize.new options.merge(image: image_in_base64)
     #   aip.client = self
     #   aip.process
     # end
@@ -482,49 +498,74 @@ module Baidu::Aip
     end
 
     def ocr_general_basic(image_in_base64, options = {})
-      aip = Ocr::GeneralBasic.new options.merge({image: image_in_base64})
+      aip = Ocr::GeneralBasic.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_genral_enhanced(image_in_base64, options = {})
-      aip = Ocr::GeneralEnhanced.new options.merge({image: image_in_base64})
+      aip = Ocr::GeneralEnhanced.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
+    # including the location
     def ocr_general(image_in_base64, options = {})
-      aip = Ocr::General.new options.merge({image: image_in_base64})
+      aip = Ocr::General.new options.merge(image: image_in_base64)
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_handwriting(image_in_base64, options = {})
+      aip = Ocr::Handwriting.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_idcard(image_in_base64, idcard_side, options = {})
-      aip = Ocr::Idcard.new options.merge({image: image_in_base64, id_card_side: idcard_side})
+      aip = Ocr::Idcard.new options.merge(image: image_in_base64, id_card_side: idcard_side)
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_passport(image_in_base64, options = {})
+      aip = Ocr::Passport.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_license_plate(image_in_base64, options = {})
-      aip = Ocr::LicensePlate.new options.merge({image: image_in_base64})
+      aip = Ocr::LicensePlate.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_receipt(image_in_base64, options = {})
-      aip = Ocr::Receipt.new options.merge({image: image_in_base64})
+      aip = Ocr::Receipt.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_vehicle_license(image_in_base64, options = {})
-      aip = Ocr::VehicleLicense.new options.merge({image: image_in_base64})
+      aip = Ocr::VehicleLicense.new options.merge(image: image_in_base64)
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_hk_macau_exitentrypermit(image_in_base64, options = {})
+      aip = Ocr::HkMacauExitentrypermit.new options.merge(image: image_in_base64)
+      aip.client = self
+      aip.process
+    end
+
+    def ocr_taiwan_exitentrypermit(image_in_base64, options = {})
+      aip = Ocr::TaiwanExitentrypermit.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end
 
     def ocr_web_image(image_in_base64, options = {})
-      aip = Ocr::WebImage.new options.merge({image: image_in_base64})
+      aip = Ocr::WebImage.new options.merge(image: image_in_base64)
       aip.client = self
       aip.process
     end

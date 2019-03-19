@@ -18,6 +18,9 @@ Or install it yourself as:
 
     $ gem install baidu-aip
 
+## Baidu document
+https://ai.baidu.com/docs
+
 ## Usage
 Add file baidu-aip.rb to your initializers folder.
 ```ruby
