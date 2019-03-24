@@ -21,14 +21,24 @@ require 'baidu/aip/face/person_id_match'
 require 'baidu/aip/face/face_verify'
 require 'baidu/aip/face/liveness_verify'
 
-require 'baidu/aip/image_recognition/animal'
-require 'baidu/aip/image_recognition/car'
+require 'baidu/aip/image_recognition/general'
+require 'baidu/aip/image_recognition/subject_location'
 require 'baidu/aip/image_recognition/dish'
+require 'baidu/aip/image_recognition/dish_add'
+require 'baidu/aip/image_recognition/dish_search'
+require 'baidu/aip/image_recognition/dish_delete'
+require 'baidu/aip/image_recognition/animal'
 require 'baidu/aip/image_recognition/logo'
 require 'baidu/aip/image_recognition/logo_add'
 require 'baidu/aip/image_recognition/logo_delete'
-require 'baidu/aip/image_recognition/object'
 require 'baidu/aip/image_recognition/plant'
+require 'baidu/aip/image_recognition/flower'
+require 'baidu/aip/image_recognition/ingredient'
+require 'baidu/aip/image_recognition/landmark'
+require 'baidu/aip/image_recognition/redwine'
+require 'baidu/aip/image_recognition/car'
+require 'baidu/aip/image_recognition/vehicle_detect'
+require 'baidu/aip/image_recognition/traffic_flow'
 
 require 'baidu/aip/image_audit/censor'
 require 'baidu/aip/image_audit/anti_porn'
@@ -221,6 +231,20 @@ module Baidu::Aip
     end
 
     # Image_recognition
+    def image_recognition_general(image_in_base64, options = {})
+      aip = ImageRecognition::Genearl.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_subject_location(image_in_base64, options = {})
+      aip = ImageRecognition::SubjectLocation.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
     def image_recognition_animal(image_in_base64, options = {})
       aip = ImageRecognition::Animal.new options.merge(image: image_in_base64)
       aip.client = self
@@ -228,15 +252,30 @@ module Baidu::Aip
       aip.process
     end
 
-    def image_recognition_car(image_in_base64, options = {})
-      aip = ImageRecognition::Car.new options.merge(image: image_in_base64)
+    def image_recognition_dish(image_in_base64, options = {})
+      options[:filter_threshold] = 0.95 unless options[:filter_threshold]
+      aip = ImageRecognition::Dish.new options.merge(image: image_in_base64)
       aip.client = self
 
       aip.process
     end
 
-    def image_recognition_dish(image_in_base64, options = {})
-      aip = ImageRecognition::Dish.new options.merge(image: image_in_base64)
+    def image_recognition_dish_add(image_in_base64, sub_lib, options = {})
+      aip = ImageRecognition::DishAdd.new options.merge(image: image_in_base64, sub_lib: sub_lib)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_dish_search(image_in_base64, sub_lib, options = {})
+      aip = ImageRecognition::DishSearch.new options.merge(image: image_in_base64, sub_lib: sub_lib)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_dish_delete(image_in_base64, sub_lib, options = {})
+      aip = ImageRecognition::DishDelete.new options.merge(image: image_in_base64, sub_lib: sub_lib)
       aip.client = self
 
       aip.process
@@ -250,21 +289,18 @@ module Baidu::Aip
     end
 
     def image_recognition_logo_add(image_in_base64, brief)
-      aip = ImageRecognition::LogoAdd.new options.merge({image: image_in_base64, brief: brief})
+      aip = ImageRecognition::LogoAdd.new options.merge(image: image_in_base64, brief: brief)
       aip.client = self
 
       aip.process
     end
 
     def image_recognition_logo_delete(image_in_base64, cont_sign)
-      aip = ImageRecognition::LogoDelete.new options.merge({image: image_in_base64, cont_sign: cont_sign})
-      aip.client = self
-
-      aip.process
-    end
-
-    def image_recognition_object(image_in_base64, options = {})
-      aip = ImageRecognition::Object.new options.merge(image: image_in_base64)
+      if image_in_base64
+        aip = ImageRecognition::LogoDelete.new image: image_in_base64
+      else
+        aip = ImageRecognition::LogoDelete.new cont_sign: cont_sign
+      end
       aip.client = self
 
       aip.process
@@ -272,6 +308,55 @@ module Baidu::Aip
 
     def image_recognition_plant(image_in_base64)
       aip = ImageRecognition::Plant.new(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_flower(image_in_base64, options = {})
+      aip = ImageRecognition::Flower.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_ingredient(image_in_base64, options = {})
+      aip = ImageRecognition::Ingredient.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_landmark(image_in_base64, options = {})
+      aip = ImageRecognition::Landmark.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_redwine(image_in_base64, options = {})
+      aip = ImageRecognition::Redwine.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_car(image_in_base64, options = {})
+      aip = ImageRecognition::Car.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_vehicle_detect(image_in_base64, options = {})
+      aip = ImageRecognition::VehicleDetect.new options.merge(image: image_in_base64)
+      aip.client = self
+
+      aip.process
+    end
+
+    def image_recognition_traffic_flow(case_id, case_int, area, image_in_base64, options = {})
+      aip = ImageRecognition::TrafficFlow.new options.merge(case_id: case_id, case_int: case_int, area: area, image: image_in_base64)
       aip.client = self
 
       aip.process

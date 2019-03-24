@@ -59,14 +59,24 @@ result = Baidu::Aip.image_recognition_dish base64
 | face | [face_identify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.face_identify(image, options) |
 | face | [face_liveness_verify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.face_liveness_verify(options) |
 | face | [face_multi_identify]() | Baidu::Aip.face_multi_identify(image, group_id, options) |
-| ImageRecognition | [image_recognition_animal]() | Baidu::Aip.image_recognition_animal(image, options) |
-| ImageRecognition | [image_recognition_car]() | Baidu::Aip.image_recognition_car(image, options) |
-| ImageRecognition | [image_recognition_dish]() | Baidu::Aip.image_recognition_dish(image, options) |
-| ImageRecognition | [image_recognition_logo]() | Baidu::Aip.image_recognition_logo(image, options) |
-| ImageRecognition | [image_recognition_logo_add]() | Baidu::Aip.image_recognition_logo_add(image, brief) |
-| ImageRecognition | [image_recognition_logo_delete]() | Baidu::Aip.image_recognition_logo_delete(image, cont_sign) |
-| ImageRecognition | [image_recognition_object]() | Baidu::Aip.image_recognition_object(image, options) |
-| ImageRecognition | [image_recognition_plant]() | Baidu::Aip.image_recognition_plant(image, options) |
+| ImageRecognition | [image_recognition_general](https://ai.baidu.com/docs#/ImageClassify-API/141c7bfa) | Baidu::Aip.image_recognition_general(image, options) |
+| ImageRecognition | [image_recognition_subject_location](https://ai.baidu.com/docs#/ImageClassify-API/ed0a8379) | Baidu::Aip.image_recognition_subject_location(image, options) |
+| ImageRecognition | [image_recognition_dish](https://ai.baidu.com/docs#/ImageClassify-API/d461e2b4) | Baidu::Aip.image_recognition_dish(image, options) |
+| ImageRecognition | [image_recognition_dish_add](https://ai.baidu.com/docs#/ImageClassify-API/c6188985) | Baidu::Aip.image_recognition_dish_add(image, sub_lib, options) |
+| ImageRecognition | [image_recognition_dish_search](https://ai.baidu.com/docs#/ImageClassify-API/2ea0f743) | Baidu::Aip.image_recognition_dish_search(image, sub_lib, options) |
+| ImageRecognition | [image_recognition_dish_delete](https://ai.baidu.com/docs#/ImageClassify-API/477e48b4) | Baidu::Aip.image_recognition_dish_delete(image, sub_lib, options) |
+| ImageRecognition | [image_recognition_logo](https://ai.baidu.com/docs#/ImageClassify-API/d9fda869) | Baidu::Aip.image_recognition_logo(image, options) |
+| ImageRecognition | [image_recognition_logo_add](https://ai.baidu.com/docs#/ImageClassify-API/722911c0) | Baidu::Aip.image_recognition_logo_add(image, brief) |
+| ImageRecognition | [image_recognition_logo_delete](https://ai.baidu.com/docs#/ImageClassify-API/ec50c3f1) | Baidu::Aip.image_recognition_logo_delete(image, cont_sign) |
+| ImageRecognition | [image_recognition_animal](https://ai.baidu.com/docs#/ImageClassify-API/562659ee) | Baidu::Aip.image_recognition_animal(image, options) |
+| ImageRecognition | [image_recognition_plant](https://ai.baidu.com/docs#/ImageClassify-API/8b21e7c7) | Baidu::Aip.image_recognition_plant(image, options) |
+| ImageRecognition | [image_recognition_flower](https://ai.baidu.com/docs#/ImageClassify-API/f4347b18) | Baidu::Aip.image_recognition_flower(image, options) |
+| ImageRecognition | [image_recognition_ingredient](https://ai.baidu.com/docs#/ImageClassify-API/f0fe4219) | Baidu::Aip.image_recognition_ingredient(image, options) |
+| ImageRecognition | [image_recognition_landmark](https://ai.baidu.com/docs#/ImageClassify-API/2c607890) | Baidu::Aip.image_recognition_landmark(image, options) |
+| ImageRecognition | [image_recognition_redwine](https://ai.baidu.com/docs#/ImageClassify-API/5e3dd57a) | Baidu::Aip.image_recognition_redwine(image, options) |
+| ImageRecognition | [image_recognition_car](https://ai.baidu.com/docs#/ImageClassify-API/fe686c3a) | Baidu::Aip.image_recognition_car(image, options) |
+| ImageRecognition | [image_recognition_vehicle_detect](https://ai.baidu.com/docs#/ImageClassify-API/57272011) | Baidu::Aip.image_recognition_vehicle_detect(image, options) |
+| ImageRecognition | [image_recognition_traffic_flow](https://ai.baidu.com/docs#/ImageClassify-API/57272011) | Baidu::Aip.image_recognition_traffic_flow(case_id, case_int, area, image_in_base64, options) |
 | ImageAudit | [image_audit_censor](https://ai.baidu.com/docs#/ImageCensoring-API/36636de4) | Baidu::Aip.image_audit_censor(image_or_url, scenes, options) |
 | ImageAudit | [image_audit_user_defined](https://ai.baidu.com/docs#/ImageCensoring-API/36636de4) | Baidu::Aip.image_audit_user_defined(image) |
 | ImageAudit | [image_audit_anti_porn_gif](https://ai.baidu.com/docs#/ImageCensoring-API/fd64e7cd) | Baidu::Aip.image_audit_anti_porn_gif(image_or_url) |

@@ -33,14 +33,24 @@ module Baidu::Aip
     IMAGE_AUDIT_COMBINATION = 'https://aip.baidubce.com/api/v1/solution/direct/img_censor'.freeze
 
     # IMAGE RECOGNITION
-    IMAGE_RECOGNITION_DISH= 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish'.freeze
-    IMAGE_RECOGNITION_CAR = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/car'.freeze
+    IMAGE_RECOGNITION_GENERAL = 'https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general'.freeze
+    IMAGE_RECOGNITION_SUBJECT_LOCATION = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/object_detect'.freeze
+    IMAGE_RECOGNITION_DISH = 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish'.freeze
+    IMAGE_RECOGNITION_DISH_ADD = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/dish/add'.freeze
+    IMAGE_RECOGNITION_DISH_SEARCH = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/dish/search'.freeze
+    IMAGE_RECOGNITION_DISH_DELETE = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/dish/delete'.freeze
     IMAGE_RECOGNITION_LOGO = 'https://aip.baidubce.com/rest/2.0/image-classify/v2/logo'.freeze
     IMAGE_RECOGNITION_LOGO_ADD = 'https://aip.baidubce.com/rest/2.0/realtime_search/v1/logo/add'.freeze
     IMAGE_RECOGNITION_LOGO_DELETE = 'https://aip.baidubce.com/rest/2.0/realtime_search/v1/logo/delete'.freeze
     IMAGE_RECOGNITION_ANIMAL = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/animal'.freeze
     IMAGE_RECOGNITION_PLANT = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant'.freeze
-    IMAGE_RECOGNITION_OBJECT = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/object_detect'.freeze
+    IMAGE_RECOGNITION_FLOWER = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/flower'.freeze
+    IMAGE_RECOGNITION_INGREDIENT = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/ingredient'.freeze
+    IMAGE_RECOGNITION_LANDMARK = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/landmark'.freeze
+    IMAGE_RECOGNITION_REDWINE = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/redwine'.freeze
+    IMAGE_RECOGNITION_CAR = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/car'.freeze
+    IMAGE_RECOGNITION_VEHICLE_DETECT = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/vehicle_detect'.freeze
+    IMAGE_RECOGNITION_TRAFFIC_FLOW = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/traffic_flow'.freeze
 
     # IMAGE_SEARCH
     IMAGE_SEARCH_SAME_ADD = 'https://aip.baidubce.com/rest/2.0/realtime_search/same_hq/add'.freeze
