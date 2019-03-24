@@ -16,7 +16,10 @@ require 'baidu/aip/face/user_add'
 require 'baidu/aip/face/user_delete'
 require 'baidu/aip/face/user_get'
 require 'baidu/aip/face/user_update'
-require 'baidu/aip/face/verify'
+require 'baidu/aip/face/person_verify'
+require 'baidu/aip/face/person_id_match'
+require 'baidu/aip/face/face_verify'
+require 'baidu/aip/face/liveness_verify'
 
 require 'baidu/aip/image_recognition/animal'
 require 'baidu/aip/image_recognition/car'
@@ -179,21 +182,38 @@ module Baidu::Aip
       aip.process
     end
 
+    def face_person_verify(image, image_type, id_card_number, name, options = {})
+      aip = Face::PersonVerify.new options.merge(image: image, image_type: image_type, id_card_number: id_card_number, name: name)
+      aip.client = self
+      aip.process
+    end
+
+    def face_person_id_match(id_card_number, name)
+      aip = Face::PersonVerify.new id_card_number:id_card_number, name: name
+      aip.client = self
+      aip.process
+    end
+
+    def face_verify(image, image_type, options = {})
+      aip = Face::FaceVerify.new options.merge(image: image, image_type: image_type)
+      aip.client = self
+      aip.process
+    end
+
     def face_identify(image_in_base64, group_id, options = {})
       aip = Face::Identify.new options.merge({image: image_in_base64, group_id: group_id})
       aip.client = self
       aip.process
     end
 
-    def face_multi_identify(image_in_base64, group_id, options = {})
-      aip = Face::MultiIdentify.new options.merge({image: image_in_base64, group_id: group_id})
+    def face_liveness_verify(options = {})
+      aip = Face::LivenessVerify.new options
       aip.client = self
       aip.process
     end
 
-
-    def face_verify(image_in_base64, id_card_number, name, options = {})
-      aip = Face::Verify.new options.merge(image: image_in_base64, id_card_number: id_card_number, name: name)
+    def face_multi_identify(image_in_base64, group_id, options = {})
+      aip = Face::MultiIdentify.new options.merge({image: image_in_base64, group_id: group_id})
       aip.client = self
       aip.process
     end

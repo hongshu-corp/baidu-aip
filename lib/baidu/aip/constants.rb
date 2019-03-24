@@ -15,8 +15,11 @@ module Baidu::Aip
     FACE_GROUP_ADD = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/add'.freeze
     FACE_GROUP_DELETE = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/add'.freeze
     FACE_GROUP_LIST = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/list'.freeze
+    FACE_PERSON_VERIFY = 'https://aip.baidubce.com/rest/2.0/face/v3/person/verify'.freeze
+    FACE_PERSON_ID_MATCH = 'https://aip.baidubce.com/rest/2.0/face/v3/person/idmatch'.freeze
+    FACE_FACE_VERIFY = 'https://aip.baidubce.com/rest/2.0/face/v3/faceverify'.freeze
     FACE_IDENTIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/identify'.freeze
-    FACE_VERIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/verify'.freeze
+    FACE_LIVENESS_VERIFY = 'https://aip.baidubce.com/rest/2.0/face/v1/faceliveness/sessioncode'.freeze
     FACE_MULTI_IDENTIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/multi-identify'.freeze
 
     # IMAGE_AUDIT

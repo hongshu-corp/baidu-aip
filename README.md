@@ -53,9 +53,12 @@ result = Baidu::Aip.image_recognition_dish base64
 | face | [face_group_delete_user](https://ai.baidu.com/docs#/Face-Set-V3/95b207bf) | Baidu::Aip.face_group_delete_user(group_id, user_id) |
 | face | [face_group_add](https://ai.baidu.com/docs#/Face-Set-V3/5867daad) | Baidu::Aip.face_group_add(group_id) |
 | face | [face_group_delete](https://ai.baidu.com/docs#/Face-Set-V3/24e7452a) | Baidu::Aip.face_group_delete(group_id) |
-| face | [face_identify]() | Baidu::Aip.face_identify(image, group_id, options) |
+| face | [face_person_verify](https://ai.baidu.com/docs#/Face-PersonVerify-V3/5e90cef1) | Baidu::Aip.face_person_verify(image, image_type, id_card_number, name, options) |
+| face | [face_person_id_match](https://ai.baidu.com/docs#/Face-PersonVerify-V3/5e90cef1) | Baidu::Aip.face_person_id_match(id_card_number, name) |
+| face | [face_verify](https://ai.baidu.com/docs#/Face-Liveness-V3/top) | Baidu::Aip.face_verify(image, image_type, options) |
+| face | [face_identify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.face_identify(image, options) |
+| face | [face_liveness_verify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.liveness_verify(options) |
 | face | [face_multi_identify]() | Baidu::Aip.face_multi_identify(image, group_id, options) |
-| face | [face_verify]() | Baidu::Aip.face_detect(image, id_card_number, name,  options) |
 | ImageRecognition | [image_recognition_animal]() | Baidu::Aip.image_recognition_animal(image, options) |
 | ImageRecognition | [image_recognition_car]() | Baidu::Aip.image_recognition_car(image, options) |
 | ImageRecognition | [image_recognition_dish]() | Baidu::Aip.image_recognition_dish(image, options) |

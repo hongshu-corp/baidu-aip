@@ -3,7 +3,7 @@ require 'baidu/aip/post_base'
 module Baidu
   module Aip
     module Face
-      class Verify < Baidu::Aip::PostBase
+      class PersonIdMatch < Baidu::Aip::PostBase
 
       end
     end
