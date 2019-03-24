@@ -1,19 +1,23 @@
 module Baidu::Aip
   module Constants
     # FACE
-    FACE_DETECT = 'https://aip.baidubce.com/rest/2.0/face/v2/detect'.freeze
-    FACE_MATCH = 'https://aip.baidubce.com/rest/2.0/face/v2/match'.freeze
+    FACE_DETECT = 'https://aip.baidubce.com/rest/2.0/face/v3/detect'.freeze
+    FACE_MATCH = 'https://aip.baidubce.com/rest/2.0/face/v3/match'.freeze
+    FACE_SEARCH = 'https://aip.baidubce.com/rest/2.0/face/v3/search'.freeze
+    FACE_USER_ADD = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/add'.freeze
+    FACE_USER_UPDATE = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/update'.freeze
+    FACE_USER_DELETE = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/face/delete'.freeze
+    FACE_USER_GET = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/get'.freeze
+    FACE_GET_LIST = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/face/getlist'.freeze
+    FACE_GROUP_GET_USERS = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/getusers'.freeze
+    FACE_GROUP_COPY_USER = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/copy'.freeze
+    FACE_GROUP_DELETE_USER = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/delete'.freeze
+    FACE_GROUP_ADD = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/add'.freeze
+    FACE_GROUP_DELETE = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/add'.freeze
+    FACE_GROUP_LIST = 'https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/list'.freeze
     FACE_IDENTIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/identify'.freeze
     FACE_VERIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/verify'.freeze
     FACE_MULTI_IDENTIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/multi-identify'.freeze
-    FACE_USER_ADD = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/add'.freeze
-    FACE_USER_UPDATE = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/update'.freeze
-    FACE_USER_DELETE = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/delete'.freeze
-    FACE_USER_GET = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/user/get'.freeze
-    FACE_GROUP_GET_LIST = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/getlist'.freeze
-    FACE_GROUP_GET_USERS = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/getusers'.freeze
-    FACE_GROUP_COPY_USER = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/adduser'.freeze
-    FACE_GROUP_DELETE_USER = 'https://aip.baidubce.com/rest/2.0/face/v2/faceset/group/deleteuser'.freeze
 
     # IMAGE_AUDIT
     IMAGE_AUDIT_ANTI_PORN = 'https://aip.baidubce.com/rest/2.0/antiporn/v1/detect'.freeze

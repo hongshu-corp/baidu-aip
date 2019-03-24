@@ -6,5 +6,4 @@ RSpec.describe Baidu::Aip::Face::GroupGetUsers, type: :model do
   describe '#service_url' do
     specify { expect(model.service_url).to eq Baidu::Aip::Constants::FACE_GROUP_GET_USERS }
   end
-
 end

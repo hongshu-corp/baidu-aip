@@ -1,13 +1,17 @@
 require 'baidu/aip/tokenable'
 
 require 'baidu/aip/face/detect'
+require 'baidu/aip/face/get_list'
+require 'baidu/aip/face/group_add'
 require 'baidu/aip/face/group_copy_user'
 require 'baidu/aip/face/group_delete_user'
-require 'baidu/aip/face/group_get_list'
+require 'baidu/aip/face/group_delete'
 require 'baidu/aip/face/group_get_users'
+require 'baidu/aip/face/group_list'
 require 'baidu/aip/face/identify'
 require 'baidu/aip/face/match'
 require 'baidu/aip/face/multi_identify'
+require 'baidu/aip/face/search'
 require 'baidu/aip/face/user_add'
 require 'baidu/aip/face/user_delete'
 require 'baidu/aip/face/user_get'
@@ -91,33 +95,86 @@ module Baidu::Aip
     attr_accessor :api_key, :secret_key
 
     # Face
-    def face_detect(image_in_base64, options = {})
-      aip = Face::Detect.new options.merge(image: image_in_base64)
+    def face_detect(image, image_type, options = {})
+      aip = Face::Detect.new options.merge(image: image, image_type: image_type)
       aip.client = self
       aip.process
     end
 
-    def face_group_copy_user(group_id, uid, source_group_id)
-      aip = Face::GroupCopyUser.new({group_id: group_id, uid: uid, src_group_id: source_group_id})
+    def face_match(images = [], options = {})
+      aip = Face::Match.new options.merge(images)
       aip.client = self
       aip.process
     end
 
-
-    def face_group_delete_user(group_id, uid)
-      aip = Face::GroupDeleteUser.new({group_id: group_id, uid: uid})
+    def face_search(image, image_type, options = {})
+      aip = Face::Match.new options.merge(image: image, image_type: image_type)
       aip.client = self
       aip.process
     end
 
-    def face_group_get_list(options = {})
-      aip = Face::GroupGetList.new options
+    def faceset_user_add(image, image_type, group_id, user_id, options = {})
+      aip = Face::UserAdd.new options.merge(image: image, image_type: image_type, group_id: group_id, user_id: user_id)
+      aip.client = self
+      aip.process
+    end
+
+    def faceset_user_update(image, image_type, group_id, user_id, options = {})
+      aip = Face::UserUpdate.new options.merge(image: image, image_type: image_type, group_id: group_id, user_id: user_id)
+      aip.client = self
+      aip.process
+    end
+
+    def faceset_user_delete(user_id, group_id, face_token, options = {})
+      aip = Face::UserDelete.new options.merge(user_id: user_id, group_id: group_id, face_token: face_token)
+      aip.client = self
+      aip.process
+    end
+
+    def faceset_user_get(user_id, group_id, options = {})
+      aip = Face::UserGet.new options.merge(user_id: user_id, group_id: group_id)
+      aip.client = self
+      aip.process
+    end
+
+    def faceset_get_list(user_id, group_id, options = {})
+      aip = Face::GetList.new options.merge(user_id: user_id, group_id: group_id)
       aip.client = self
       aip.process
     end
 
     def face_group_get_users(group_id, options = {})
-      aip = Face::GroupGetUsers.new options.merge({group_id: group_id})
+      aip = Face::GroupGetUsers.new options.merge(group_id: group_id)
+      aip.client = self
+      aip.process
+    end
+
+    def face_group_copy_user(user_id, source_group_id, dest_group_id)
+      aip = Face::GroupCopyUser.new(user_id: user_id, source_group_id: source_group_id, dest_group_id: dest_group_id)
+      aip.client = self
+      aip.process
+    end
+
+    def face_group_delete_user(group_id, user_id)
+      aip = Face::GroupDeleteUser.new(group_id: group_id, user_id: user_id)
+      aip.client = self
+      aip.process
+    end
+
+    def face_group_add(group_id)
+      aip = Face::GroupAdd.new(group_id: group_id)
+      aip.client = self
+      aip.process
+    end
+
+    def face_group_delete(group_id)
+      aip = Face::GroupDelete.new(group_id: group_id)
+      aip.client = self
+      aip.process
+    end
+
+    def face_group_list(options = {})
+      aip = Face::GroupList.new(options)
       aip.client = self
       aip.process
     end
@@ -128,41 +185,12 @@ module Baidu::Aip
       aip.process
     end
 
-    def face_match(images_in_base64 = [], options = {})
-      aip = Face::Match.new options.merge({image: images_in_base64.join(',')})
-      aip.client = self
-      aip.process
-    end
-
     def face_multi_identify(image_in_base64, group_id, options = {})
       aip = Face::MultiIdentify.new options.merge({image: image_in_base64, group_id: group_id})
       aip.client = self
       aip.process
     end
 
-    def face_user_add(uid, group_id, image_in_base64, user_info, options = {})
-      aip = Face::UserAdd.new options.merge({uid: uid, group_id: group_id, image: image_in_base64, user_info: user_info})
-      aip.client = self
-      aip.process
-    end
-
-    def face_user_delete(uid, options = {})
-      aip = Face::UserDelete.new options.merge({uid: uid})
-      aip.client = self
-      aip.process
-    end
-
-    def face_user_get(uid, options = {})
-      aip = Face::UserGet.new options.merge({uid: uid})
-      aip.client = self
-      aip.process
-    end
-
-    def face_user_update(uid, image_in_base64, user_info, group_id, options = {})
-      aip = Face::UserUpdate.new options.merge(uid: uid, image: image_in_base64, user_info: user_info, group_id: group_id)
-      aip.client = self
-      aip.process
-    end
 
     def face_verify(image_in_base64, id_card_number, name, options = {})
       aip = Face::Verify.new options.merge(image: image_in_base64, id_card_number: id_card_number, name: name)
