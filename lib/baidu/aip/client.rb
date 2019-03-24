@@ -30,12 +30,14 @@ require 'baidu/aip/image_recognition/logo_delete'
 require 'baidu/aip/image_recognition/object'
 require 'baidu/aip/image_recognition/plant'
 
+require 'baidu/aip/image_audit/censor'
 require 'baidu/aip/image_audit/anti_porn'
 require 'baidu/aip/image_audit/anti_porn_gif'
-require 'baidu/aip/image_audit/anti_terror'
 require 'baidu/aip/image_audit/combination'
-require 'baidu/aip/image_audit/face'
+require 'baidu/aip/image_audit/video'
 require 'baidu/aip/image_audit/user_defined'
+require 'baidu/aip/image_audit/face'
+require 'baidu/aip/image_audit/feedback'
 
 require 'baidu/aip/image_search/product_add'
 require 'baidu/aip/image_search/product_delete'
@@ -201,7 +203,7 @@ module Baidu::Aip
     end
 
     def face_identify(image_in_base64, group_id, options = {})
-      aip = Face::Identify.new options.merge({image: image_in_base64, group_id: group_id})
+      aip = Face::Identify.new options.merge(image: image_in_base64, group_id: group_id)
       aip.client = self
       aip.process
     end
@@ -213,7 +215,7 @@ module Baidu::Aip
     end
 
     def face_multi_identify(image_in_base64, group_id, options = {})
-      aip = Face::MultiIdentify.new options.merge({image: image_in_base64, group_id: group_id})
+      aip = Face::MultiIdentify.new options.merge(image: image_in_base64, group_id: group_id)
       aip.client = self
       aip.process
     end
@@ -276,6 +278,18 @@ module Baidu::Aip
     end
 
     # Image audit
+    def image_audit_censor(image_or_url, scenes, options = {})
+      aip = ImageAudit::Censor.new options.merge(scenes: scenes).merge(image_or_url_param(image_or_url))
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_user_defined(image_or_url)
+      aip = ImageAudit::UserDefined.new image_or_url_param(image_or_url)
+      aip.client = self
+      aip.process
+    end
+
     def image_audit_anti_porn(image_in_base64)
       aip = ImageAudit::AntiPorn.new(image: image_in_base64)
       aip.client = self
@@ -288,13 +302,19 @@ module Baidu::Aip
       aip.process
     end
 
-    def image_audit_anti_terrer(image_in_base64)
-      aip = ImageAudit::AntiTerror.new(image: image_in_base64)
+    def image_audit_video(appid, scenes, image_urls, options = {})
+      aip = ImageAudit::Video.new options.merge(appid: appid, scenes: scenes, imgUrls: image_urls)
       aip.client = self
       aip.process
     end
 
-    def image_audit_combination(scenes, image_in_base64, options={})
+    def image_audit_feedback(api_url, correct, options = {})
+      aip = ImageAudit::Feedback.new options.merge(api_url: api_url, correct: correct)
+      aip.client = self
+      aip.process
+    end
+
+    def image_audit_combination(scenes, image_in_base64, options = {})
       aip = ImageAudit::Combination.new options.merge({scenes: scenes, image: image_in_base64})
       aip.client = self
       aip.process
@@ -307,19 +327,13 @@ module Baidu::Aip
     end
 
     def image_audit_face(images_in_base64 = [])
-      aip = ImageAudit::Face.new({images: images_in_base64.join(',')})
+      aip = ImageAudit::Face.new(images: images_in_base64.join(','))
       aip.client = self
       aip.process
     end
 
     def image_audit_face_url(image_urls = [])
-      aip = ImageAudit::Face.new({imgUrls: image_urls.join(',')})
-      aip.client = self
-      aip.process
-    end
-
-    def image_audit_user_defined(image_in_base64)
-      aip = ImageAudit::UserDefined.new({image: images_in_base64})
+      aip = ImageAudit::Face.new(imgUrls: image_urls.join(','))
       aip.client = self
       aip.process
     end
@@ -622,6 +636,18 @@ module Baidu::Aip
       aip = Voice::TextToVoice.new options.merge(tex: text)
       aip.client = self
       aip.process
+    end
+
+    private
+
+    def image_or_url_param(image_or_url, image_key = 'image', url_key = 'imgUrl')
+      result = {}
+      if image_or_url.to_s.start_with? 'http'
+        result[url_key] = image_or_url
+      else
+        result[image_key] = image_or_url
+      end
+      result
     end
   end
 end

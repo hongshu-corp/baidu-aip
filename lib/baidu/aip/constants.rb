@@ -23,12 +23,14 @@ module Baidu::Aip
     FACE_MULTI_IDENTIFY = 'https://aip.baidubce.com/rest/2.0/face/v2/multi-identify'.freeze
 
     # IMAGE_AUDIT
+    IMAGE_AUDIT_CENSOR = 'https://aip.baidubce.com/api/v1/solution/direct/img_censor'.freeze
+    IMAGE_AUDIT_USER_DEFINED = 'https://aip.baidubce.com/rest/2.0/solution/v1/img_censor/user_defined'.freeze
     IMAGE_AUDIT_ANTI_PORN = 'https://aip.baidubce.com/rest/2.0/antiporn/v1/detect'.freeze
     IMAGE_AUDIT_ANTI_PORN_GIF = 'https://aip.baidubce.com/rest/2.0/antiporn/v1/detect_gif'.freeze
-    IMAGE_AUDIT_ANTI_TERROR = 'https://aip.baidubce.com/rest/2.0/antiterror/v1/detect'.freeze
-    IMAGE_AUDIT_USER_DEFINED = 'https://aip.baidubce.com/rest/2.0/solution/v1/img_censor/user_defined'.freeze
-    IMAGE_AUDIT_COMBINATION = 'https://aip.baidubce.com/api/v1/solution/direct/img_censor'.freeze
     IMAGE_AUDIT_FACE = 'https://aip.baidubce.com/rest/2.0/solution/v1/face_audit'.freeze
+    IMAGE_AUDIT_VIDEO = 'https://aip.baidubce.com/rest/2.0/solution/v1/video_censor/user_defined'.freeze
+    IMAGE_AUDIT_FEEDBACK = 'https://aip.baidubce.com/rpc/2.0/feedback/v1/report'.freeze
+    IMAGE_AUDIT_COMBINATION = 'https://aip.baidubce.com/api/v1/solution/direct/img_censor'.freeze
 
     # IMAGE RECOGNITION
     IMAGE_RECOGNITION_DISH= 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish'.freeze

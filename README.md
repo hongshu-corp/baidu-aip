@@ -57,7 +57,7 @@ result = Baidu::Aip.image_recognition_dish base64
 | face | [face_person_id_match](https://ai.baidu.com/docs#/Face-PersonVerify-V3/5e90cef1) | Baidu::Aip.face_person_id_match(id_card_number, name) |
 | face | [face_verify](https://ai.baidu.com/docs#/Face-Liveness-V3/top) | Baidu::Aip.face_verify(image, image_type, options) |
 | face | [face_identify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.face_identify(image, options) |
-| face | [face_liveness_verify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.liveness_verify(options) |
+| face | [face_liveness_verify](https://ai.baidu.com/docs#/Face-H5Liveness-V3/624a381c) | Baidu::Aip.face_liveness_verify(options) |
 | face | [face_multi_identify]() | Baidu::Aip.face_multi_identify(image, group_id, options) |
 | ImageRecognition | [image_recognition_animal]() | Baidu::Aip.image_recognition_animal(image, options) |
 | ImageRecognition | [image_recognition_car]() | Baidu::Aip.image_recognition_car(image, options) |
@@ -67,16 +67,13 @@ result = Baidu::Aip.image_recognition_dish base64
 | ImageRecognition | [image_recognition_logo_delete]() | Baidu::Aip.image_recognition_logo_delete(image, cont_sign) |
 | ImageRecognition | [image_recognition_object]() | Baidu::Aip.image_recognition_object(image, options) |
 | ImageRecognition | [image_recognition_plant]() | Baidu::Aip.image_recognition_plant(image, options) |
-| ImageAudit | [image_audit_anti_porn]() | Baidu::Aip.image_audit_anti_porn(image) |
-| ImageAudit | [image_audit_anti_porn_gif]() | Baidu::Aip.image_audit_anti_porn_gif(image) |
-| ImageAudit | [image_audit_anti_porn]() | Baidu::Aip.image_audit_anti_porn(image) |
-| ImageAudit | [image_audit_anti_terrer]() | Baidu::Aip.image_audit_anti_terrer(image) |
-| ImageAudit | [image_audit_combination]() | Baidu::Aip.image_audit_combination(scenes, image, options) |
-| ImageAudit | [image_audit_combination_with_url]() | Baidu::Aip.image_audit_combination_with_url(scenes, image_url, options) |
-| ImageAudit | [image_audit_face]() | Baidu::Aip.image_audit_face(image) |
-| ImageAudit | [image_audit_face_url]() | Baidu::Aip.image_audit_face_url(urls) |
-| ImageAudit | [image_audit_user_defined]() | Baidu::Aip.image_audit_user_defined(image) |
-| ImageAudit | [image_audit_face_url]() | Baidu::Aip.image_audit_face_url(url) |
+| ImageAudit | [image_audit_censor](https://ai.baidu.com/docs#/ImageCensoring-API/36636de4) | Baidu::Aip.image_audit_censor(image_or_url, scenes, options) |
+| ImageAudit | [image_audit_user_defined](https://ai.baidu.com/docs#/ImageCensoring-API/36636de4) | Baidu::Aip.image_audit_user_defined(image) |
+| ImageAudit | [image_audit_anti_porn_gif](https://ai.baidu.com/docs#/ImageCensoring-API/fd64e7cd) | Baidu::Aip.image_audit_anti_porn_gif(image_or_url) |
+| ImageAudit | [image_audit_face](https://ai.baidu.com/docs#/ImageCensoring-API/5b2d2416) | Baidu::Aip.image_audit_face(image) |
+| ImageAudit | [image_audit_face_url](https://ai.baidu.com/docs#/ImageCensoring-API/5b2d2416) | Baidu::Aip.image_audit_face_url(urls) |
+| ImageAudit | [image_audit_video](https://ai.baidu.com/docs#/ImageCensoring-API/37a375a1) | Baidu::Aip.image_audit_video(scenes, image, options) |
+| ImageAudit | [image_audit_feedback](https://ai.baidu.com/docs#/ImageCensoring-API/2e8d3d8c) | Baidu::Aip.image_audit_feedback(api_url, correct, options) |
 | ImageSearch | [image_search_product_add]() | Baidu::Aip.image_search_product_add(image, options) |
 | ImageSearch | [image_search_product]() | Baidu::Aip.image_search_product(image, options) |
 | ImageSearch | [image_search_product_delete]() | Baidu::Aip.image_search_product_delete(image) |

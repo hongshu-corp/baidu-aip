@@ -3,7 +3,7 @@ require 'baidu/aip/post_base'
 module Baidu
   module Aip
     module ImageAudit
-      class AntiTerror < Baidu::Aip::PostBase
+      class Video < Baidu::Aip::PostBase
 
       end
     end
